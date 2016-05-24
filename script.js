@@ -1,4 +1,5 @@
 //script.js
+
 var APPID = "4ffc70eb22e7108feb842ad56cb45d4c";
 var temp;
 var loc;
@@ -7,8 +8,22 @@ var humidity;
 var wind;
 var direction;
 
+// Usando a API do open weather map 
+// para coletar dados por cidade.
 function updateByCity(city) {
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&lang=pt" + "&APPID=" + APPID;
+    var url = "http://api.openweathermap.org/data/2.5/weather?" +
+    "q="+ city + 
+    "&lang=pt" +
+    "&APPID=" + APPID;
+    sendRequest(url);
+}
+
+// Usando a API do open weather map 
+// para coletar dados por localização geográfica.
+function updateByGeo(lat, lon) {
+    var url = "http://api.openweathermap.org/data/2.5/weather?" + "lat=" + lat +
+    "&lon=" + lon +
+    "&APPID=" + APPID;
     sendRequest(url);
 }
 
@@ -65,6 +80,10 @@ function update(weather) {
     icon.src = "imgs/codes/" + weather.icon + ".png";
 }
 
+function showPosition(position) {
+    updateByGeo(position.coords.latitude, position.coords.longitude);
+}
+
 window.onload = function() {
     temp = document.getElementById("temperature");
     loc = document.getElementById("location");
@@ -72,7 +91,11 @@ window.onload = function() {
     humidity = document.getElementById("humidity");
     wind = document.getElementById("wind");
     direction = document.getElementById("direction");
-
     
-    updateByCity("Rio de Janeiro");
+    if(!navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        var city = window.prompt("Não podemos descobrir sua localização. Em que cidade você está?")
+        updateByCity(city);
+    }
 }
