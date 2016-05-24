@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+   
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>Weather App</title>    
+    
+    <!-- Custom stylesheet -->
+    <link href="style.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    
+</head>
+   
+<body>
+            
+    <div class="weather-app clearfix">
+       
+        <div class="left">
+           <div class="temperature"><span id="temperature">0 </span> C&deg;</div>
+           <div class="location"><span id="location">Desconhecida</span></div>            
+        </div><!-- end left div -->
+        
+        <div class="right">
+            <div class="top">
+                <img id="icon" width="75px" src="imgs/codes/200.png">
+            </div><!-- end top div inside right div -->
+            
+            <div class="bottom">
+                <div class="humidity">
+                    <img src="imgs/humidity.png" height="16px">
+                    <span id="humidity">0</span>%
+                </div>
+                
+                <div class="wind">
+                    <span id="wind">0</span> km/h <span id="direction">N</span>
+                </div>
+            </div><!-- end bottom div inside right div -->
+        </div><!-- end right div -->
+        
+    </div><!-- end weather-app div -->
+    
+
+    <!-- Custom script -->  
+    <script src="script.js"></script>
+</body>
+    
+</html>
